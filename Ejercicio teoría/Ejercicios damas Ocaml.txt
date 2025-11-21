@@ -1,0 +1,37 @@
+(*Ejercicios damas Ocaml*)
+
+int -> (int * int) list option
+
+'a option
+
+Some of 'a
+None
+
+let (//) m n =
+	if n <> 0 then Some (m/n)
+	else None
+
+let come (i1, j1) (i2,j2) =
+	i1 = i2 || (*misma fila*)
+	j1 = j2 ||(*misma columna*)
+	abs (i2 -i1) = abs (j2-j1)
+	
+let rec comaptible c = function
+	[] -> true
+	| h :: t -> not (come c h) && compatible c t
+	
+let reinas n =
+	let rec completa camino (i,j) =
+		if i > n then Some camino
+		else if j > n then None
+			else if compatible (i,j) camino
+				then 
+				match completa ((i,j) :: camino) (i+1, 1) with
+				None -> completa camino (i, j+1)
+			      | solucion -> solucion
+				
+				else completa camino (i, j+1) camino
+				
+	in completa [] (1,1)
+	
+
