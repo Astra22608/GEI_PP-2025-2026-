@@ -21,4 +21,7 @@ PRACTICA 3:
   if_then_else = 10
 
 
+PRACTICA COMPETIVA: 
+  1. 0.8/0.8
+
 (*Todos los fallos espero ir solucionandolos cuando tenga más tiempo y subirlos aquí en condiciones*)
