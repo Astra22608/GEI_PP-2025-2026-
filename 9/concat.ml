@@ -6,29 +6,31 @@
       
 *)
 
-let l = List.init 50_000 (fun i -> [i])
+(*let l = List.init 50_000 (fun i -> [i])*)
 
+(* Usa fold_right: eficiente porque append recorre solo h, no acc *)
 let concat' l =
   List.fold_right (fun h acc -> List.append h acc) l []
+(* Más eficiente que fold_left porque List.append h acc solo recorre
+  la sublista actual h (normalmente corta), mientras acc ya está construida.*)
 
+(* Versión recursiva terminal, sin usar List.append *)
 let concat'' l =
-  let rec aux_list acc = function
-    | [] -> acc
-    | h::t -> aux_list (h::acc) t
-  in
-  let rec aux_main acc = function
+  let rec aux acc = function
     | [] -> List.rev acc
-    | h::t -> aux_main (aux_list acc (List.rev h)) t
-  in
-  aux_main [] l
+    | h :: t ->
+        let rec copy acc = function
+          | [] -> aux acc t
+          | x :: xs -> copy (x :: acc) xs
+        in copy acc h
+  in aux [] l
 
 let sublists lst =
-  let rec aux = function
-    | [] -> [[]]
-    | h::t ->
-        let subs = aux t in
-        subs @
-        List.map (fun sub -> h::sub) subs
+  let rec aux acc = function
+    | [] -> List.rev acc
+    | h :: t ->
+        let new_sublists = List.map (fun s -> h :: s) acc in
+        let new_acc = List.rev_append new_sublists acc in
+        aux new_acc t
   in
-  aux lst
-
+  aux [[]] lst
