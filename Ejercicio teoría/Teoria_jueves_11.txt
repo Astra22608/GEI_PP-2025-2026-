@@ -1,0 +1,44 @@
+(*Dia 11/12/2025*)
+
+let double_next c =
+    2 * c#next
+
+let c1 = object
+    val mutable n = 0
+    method next = n <- n+1; n
+    method reset = n <- 0
+end
+
+class counter = object
+    val mutable n = 0
+    method next = n <- n + 1; n
+    method reset = n <- 0
+end
+
+class counter_with_set = object
+    val mutable n = 0
+    method next = n <- n + 1; n
+    method reset = n <- 0
+    method set ini = n <- ini
+end
+
+class counter_with_set = object
+    inherit counter
+    class counter_with_set = object
+end
+
+class counter_with_set_and_init n0 = object (self)
+    inherit counter_with_set
+    initializer self#set n0
+end    
+
+class counter_with_limit n0 max = object (self)
+    inherit counter_with_set_and init n0 as super
+    method next = let n = super#next in
+    if n <= max then n else (self#reset; super#next)
+end    
+(*
+let c5 = new counter_with_limit 7 10
+c5#next 
+int = 8
+*)

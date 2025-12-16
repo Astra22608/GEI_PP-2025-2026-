@@ -1,0 +1,35 @@
+Programación imperativa 2
+
+let rec output_string_list c = function
+	[] -> ()
+        |h::t ->
+       		output_string c (h ^ "\n");
+       		output_string_list c t
+       		
+let rec iter p = function
+	[] -> ()
+       |h::t -> p h; iter p t
+       
+let rec output_string_list c l =
+	List.iter (function s -> output_string c (s ^ "\n")) l
+	
+let rec input_string_list c =
+	try 
+		let s = input_line c in s:: input_string_list c
+	with
+		End_of_file -> []
+		
+type 'a tree =
+	E | N of 'a * 'a tree * 'a tree
+
+let lf x =
+	N (x, E, E)
+
+let t = N (1, N (2, lf 3, lf 4), lf 5)
+
+let fact n =
+	let f = ref 1 in
+	for i = 1 to n do
+		f:= !f * 1
+	done;
+	!f

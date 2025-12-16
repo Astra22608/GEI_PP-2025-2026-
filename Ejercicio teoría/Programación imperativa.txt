@@ -1,0 +1,69 @@
+Programación imperativa
+
+
+
+```
+output_char;; (* es como un file descriptor pero en el que solo se puede escribir *)
+stdout;; (* salida estándar *)
+
+output_char stdout 'A';;
+
+let print_char = output_char stdout;; (* ya está definida -> Stdlib.print_char *)
+print_char 'A';;
+
+let () = print_char 'a' in let () = print_char 'b' in print_char 'c';; (* abc *)
+```
+`let _ = <e1> in <2>` === `<e1>;<e2>`
+
+```
+print_char 'a'; print_char 'b'; print_char 'c';; (* equivalente al anterior ejemplo *)
+
+1 + 3; "ab" ^ "cd";; (* se evalua el `1 + 3` pero se ignora, devuelve "abcd",
+                        da warning porque espera algo de tipo unit en el `1 + 3` *)
+
+ignore (1 + 3); "ab" ^ "cd";; (* evitar el warning, Stdlib.ignore *)
+
+"hola".[0];; (* primer carácter del string, si se va de rango -> exception *)
+
+let output_string canal str =
+    let len = String.length str in
+    let rec loop i =
+        if i = len then ()
+        else begin
+            output_char canal str.[i]; loop (i + 1)
+            end
+    in loop 0;;
+
+let output_string canal = String.iter (output_char canal);; (* lo mismo pero reducido *)
+
+let print_string str = output_string stdout str;; (* ya está implementada *)
+
+let print_endline str = print_string (str ^ "\n");;
+
+let print_newline () = print_endline "";; (* unit -> unit *)
+let print_newline = print_endline "";; (* unit *)
+
+let print_int x = print_string (string_of_int x);;
+
+input_char;; (* similar a un fd del que sólo se puede leer *)
+stdin;;
+
+input_char stdin;; (* espera el input del teclado, si introduces más de un caracter
+                      el resto queda en buffer, entonces si vuelves a llamar a la
+                      función te devuelve el siguiente en el buffer *)
+input_line;;
+input_line stdin;;
+
+let read_line () = input_line stdin;; (* ya está definida Stdlib.read_line *)
+
+open_out;;
+let s = open_out "prueba";;
+output_string s "abcd";; (* así tal cual no escribe nada, porque necesita acceso al kernel
+                            para poder escribir, entonces queda en buffer *)
+flush s;; (* con esto ahora si que termina de escribir todo lo que tenía en buffer *)
+
+let print_endline str = print_string (str ^ "\n"); flush stdout;; (* retomando la anterior
+                                                                     función para enviar la
+                                                                     información pendiente *)
+```
+`

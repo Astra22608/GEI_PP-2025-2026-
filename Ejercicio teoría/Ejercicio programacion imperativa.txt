@@ -1,0 +1,112 @@
+(*Factorial*)
+let fac n =
+	let res = ref 1
+	and i = ref 1
+	in while !i <= n do
+		res := !res * !i
+		i := !i + 1
+	   done;
+	!res;;
+
+(*Maquina de turnos de un supermercado*)
+//En c:
+	int turno () {
+	  static int i = 0;
+	  i ++;
+	  return i;
+	}
+	
+let turno () =
+	n := !n + 1;
+	!n;;
+	
+(*En esta funcion siempre nos va a devolver 1*)
+(*Solución:*)
+
+let turno =
+	let n = ref 0 in
+	function () ->
+		n := !n + 1;
+		!n;;
+	
+
+let turno, reset =
+	let n = ref 0 in
+	(function () -> n := !n + 1; !n;;) (function () -> n := 0;;)
+(*Esto se empieza a parecer a objetos*)
+
+(Interfaces -> .mli)
+val turno : unit -> init
+val reset : unit -> unit
+
+(*La implementacion es la misma de antes, solo que podemos poner la variable fuera "let n = ref 0*)
+
+module Counter :
+	sig
+(*sig -> interfaz*)
+		val turno : unit -> init
+		val reset : unit -> unit
+	end = struct
+	   let n = ref 0
+	   
+	   let turno () =
+	   	n : !n + 1;
+	   	!n;;
+	   let reset () =
+	   	n := 0
+	end;; 
+	
+	
+module Counter () : (*comportamiento similar a una funcion "functor"*)
+	sig
+		val turno : unit -> init
+		val reset : unit -> unit
+	end = struct
+	   let n = ref 0
+	   
+	   let turno () =
+	   	n : !n + 1;
+	   	!n;;
+	   let reset () =
+	   	n := 0
+	end;; 
+	
+module IntPair = struct
+	type t = int * int
+	let compare = compare
+       end;;
+
+module IntPairSet = Set.Make (IntPair);; (*Crea un nuevo modulo*)
+
+
+let l = List.init 50_000 (fun -> (Random.int 1000, Random.int 1000));;
+
+filter (fun x -> List.mem x l) (List.init 1000 (fun i -> (i,i)));;
+
+let s = IntPairSet.of_list;; (*transforma en un conjunto una lista*)
+(*es mas rápido mirar si algo esta en un conjunto antes que mirarlo en una lista*)
+
+[| |];; (*array vacio*)
+let v = [|1;2;3|];; (*array con valores*)
+
+v.(1) (*valor de un array*)
+Array.get v 0;; (lo mismo que la anterior)
+Array.length v ;; (*tamaño del array*)
+v.(0) <- 100 (*introducimos en la posicion 0 el numero 100*)
+
+Array.make 10 0;; (*crear un tamaño de array aleatorio*) (*10 -> cantidad de valores || 0 -> del numero de lo que queremos rellenar*)
+Array.init 10 (fun i -> i + 1);; 
+
+List.sort;; (*ordenar una lista*)
+let a = Array.init 20 (fun _ -> Random.int 20);;
+
+Array.sort compare a;; (*ordena el valor*)
+Array.copy a;; (*copiar array*)
+
+Array.append;;
+Array.concat;;
+Array.sub [|1;2;3] 1 3;;
+Array.to_list;;
+Array.for_all;;
+Array.exists;;
+Array.map;;
