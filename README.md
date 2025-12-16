@@ -1,6 +1,6 @@
 # Ejercicios de Paradigmas de la Programación.
 
-Ejercicios realizados por Candela Naya López durante el curso académico 2025/2026 en la asignatura Paradigmas de la Programación. 
+Ejercicios realizados durante el curso académico 2025/2026 en la asignatura Paradigmas de la Programación. 
 
 Ire subiendo las notas según las tenga:
 
