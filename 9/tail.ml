@@ -1,13 +1,10 @@
 let front lst =
-  let rec aux acc prev = function
+  let rec aux acc = function
     | [] -> raise (Failure "front")
-    | [_] -> List.rev acc
-    | h::t -> aux (prev::acc) h t
+    | [_] -> List.rev acc          
+    | h :: t -> aux (h :: acc) t   
   in
-  match lst with
-  | [] -> raise (Failure "front")
-  | h::t -> aux [] h t
-
+  aux [] lst
 
 let compress lst =
   let rec aux acc = function
