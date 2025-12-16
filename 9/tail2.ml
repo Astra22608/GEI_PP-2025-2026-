@@ -1,25 +1,28 @@
+
 (* FRONT: NO puede usar TMC eficientemente *)
 (*
-   front construye la lista al revés mentalmente, pero necesita saber
+   front construye la lista al revés, pero necesita saber
    cuál es el último elemento antes de construir el resultado.
-   No es un buen candidato para TMC porque requiere conocer el final.
+   No usar TMC porque la recursión no está directamente
+   bajo un constructor (::) de forma que el compilador pueda optimizarla fácilmente.
    
-   La mejor versión sigue siendo la del tail.ml con acumulador explícito.
+   La mejor versión sigue siendo una recursiva terminal con acumulador explícito.
 *)
 let front lst =
-  let rec aux acc prev = function
-    | [] -> raise (Failure "front")
-    | [_] -> List.rev acc
-    | h::t -> aux (prev::acc) h t
-  in
   match lst with
   | [] -> raise (Failure "front")
-  | h::t -> aux [] h t
+  | [_] -> []  (* Caso especial para listas de un elemento *)
+  | _ ->
+      let rec aux acc = function
+        | [_] -> List.rev acc  (* Devuelve acumulado invertido, excluyendo el último *)
+        | h :: t -> aux (h :: acc) t
+        | [] -> failwith "unexpected"  (* No debería ocurrir *)
+      in aux [] lst
 
 (* COMPRESS: SÍ puede usar TMC *)
 (*
-   compress es un excelente candidato para TMC porque la llamada recursiva
-   aparece directamente como argumento del constructor (::)
+   compress puede usar TMC porque la llamada recursiva
+   aparece directamente como argumento del constructor (::).
 *)
 let rec compress = function
   | [] -> []
@@ -36,7 +39,7 @@ let rec compress = function
    fold_right no puede usar TMC porque la llamada recursiva no aparece
    directamente en un constructor, sino dentro de la aplicación de una función.
    
-   La mejor implementación sigue siendo con continuaciones o con List.rev + fold_left
+   Alternativa recomendada (comentada abajo): Usar List.rev + List.fold_left.
 *)
 let fold_right f lst init =
   let rec aux cont = function
@@ -45,32 +48,27 @@ let fold_right f lst init =
   in
   aux (fun x -> x) lst
 
+
 (*
    CONCLUSIONES Y COMPARACIÓN DE RENDIMIENTO:
-   
    1. FRONT:
-      - TMC: No aplicable de forma útil
-      - Versión con acumulador (tail.ml): Mejor opción
+      - TMC: No aplicable de forma útil (la recursión requiere conocimiento del final, no encaja en el patrón TMC).
    
    2. COMPRESS:
-      - TMC: ¡EXCELENTE CANDIDATO!
-      - La versión con [@tail_mod_cons] es más simple y clara que la versión
-        con acumulador explícito
+      - TMC: Si aplicable de forma útil. Con [@@tail_mod_cons], el compilador la hace terminal automáticamente, evitando stack overflow.
    
    3. FOLD_RIGHT:
-      - TMC: No aplicable (la recursión no está en un constructor)
-      - Versión con continuaciones: Puede causar stack overflow en listas grandes
+      - TMC: No aplicable (recursión en funciones, no constructores).
    
    VENTAJAS DE TMC:
-   + Código más simple y legible
-   + No requiere List.rev al final (mantiene orden naturalmente)
-   + Optimizado por el compilador automáticamente
-   + Stack overflow evitado por la optimización del compilador
+   + Código más simple y legible (parece recursivo normal, pero optimizado).
+   + No requiere List.rev al final (mantiene orden naturalmente).
+   + Optimizado por el compilador automáticamente (tail-recursive interna).
+   + Evita stack overflow sin reescribir manualmente.
    
    DESVENTAJAS DE TMC:
-   - Solo funciona para casos específicos (constructor como contexto inmediato)
-   - Requiere OCaml 5.0 o superior
-   - No aplicable a todas las funciones recursivas
+   - Solo funciona para patrones específicos (recursión bajo constructor como ::).
+   - No aplicable a todas las funciones; para las no elegibles, usa acumuladores o continuaciones.
+   
+   En general, para listas largas (e.g., >100k), las versiones terminales/TMC superan a las no-terminales en estabilidad (sin overflows). TMC brilla en simplicidad para funciones como compress.
 *)
-
-
