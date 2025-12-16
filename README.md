@@ -5,7 +5,7 @@ Ejercicios realizados por Candela Naya López durante el curso académico 2025/2
 Ire subiendo las notas según las tenga:
 
 PRACTICA 1:
-  nombre.ml = 10 ||
+  nombre.ml = 10  
   pi.ml = 10 ||
   expr.ml = 10 ||
   e.ml = 10 
