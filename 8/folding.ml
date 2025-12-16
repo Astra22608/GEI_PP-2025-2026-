@@ -14,8 +14,9 @@ let lmin_lmax = function
       List.fold_left (fun (min_val, max_val) x -> 
         (min min_val x, max max_val x)) (h, h) t
 
-let last l =
-  List.fold_left (fun _ x -> x) (List.hd l) l
+let last = function
+  | [] -> raise (Failure "last")
+  | h :: t -> List.fold_left (fun _ x -> x) h t
 
 let rev l =
   List.fold_left (fun acc x -> x :: acc) [] l
