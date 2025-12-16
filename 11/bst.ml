@@ -1,9 +1,14 @@
 let is_bst ord t =
-  let rec ok = function
-    | [] | [_] -> true
-    | x::y::ys -> ord x y && ok (y::ys)
+  let rec check t min max =
+    if BinTree.is_empty t then true
+    else
+      let v = BinTree.root t in
+      (match min with None -> true | Some m -> ord m v) &&
+      (match max with None -> true | Some m -> ord v m) &&
+      check (BinTree.left_branch t) min (Some v) &&
+      check (BinTree.right_branch t) (Some v) max
   in
-  ok (BinTree.inorder t)
+  check t None None
 
 let rec mem ord x t =
   if BinTree.is_empty t then false
