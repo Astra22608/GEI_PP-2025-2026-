@@ -21,9 +21,10 @@ let remove_all x l =
   List.filter (fun y -> y <> x) l
 
 let remove_duplicates l =
-  List.fold_left (fun acc x -> 
-    if List.mem x acc then acc else x :: acc) [] l 
-  |> List.rev
+  List.fold_left
+    (fun acc x -> if List.mem x acc then acc else acc @ [x])
+    []
+    l
 
 let ldif l1 l2 =
   List.filter (fun x -> not (List.mem x l2)) l1
