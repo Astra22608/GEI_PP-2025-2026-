@@ -4,16 +4,16 @@ Ejercicios realizados durante el curso académico 2025/2026 en la asignatura Par
 
 Ire subiendo las notas según las tenga:
 
-PRACTICA 1:  
+PRÁCTICA 1:  
   · nombre.ml = 10  
   · pi.ml = 10  
   · expr.ml = 10  
   · e.ml = 10 
 
-PRACTICA 2:  
+PRÁCTICA 2:  
   · frases.ml = 10
 
-PRACTICA 3:  
+PRÁCTICA 3:  
   · def.ml = 8  
   · def_a.ml 8  
   · funciones.ml = 10  
@@ -21,7 +21,7 @@ PRACTICA 3:
   · if_then_else = 10
 
 
-PRACTICA COMPETIVA: 
+PRÁCTICAS COMPETIVAS: 
   1. 0.8/0.8 (tribo.ml)
   2. 1/1.2 (ajedrez.ml)
 
