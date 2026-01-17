@@ -66,9 +66,9 @@ PRÁCTICA 12:
 
 PRÁCTICAS COMPETIVAS: 
   1. 0.8/0.8 (tribo.ml)
-  2. 1/1.2 (ajedrez.ml)
+  2. 1/1.2 (ajedrez.ml) -> (*Es un poco ineficiente*)
 
-(*Con las prácticas y la asistencia a clase saqué la puntuación máxima, es decir 2/2*)
+(*Con las prácticas y la asistencia a clase saqué la puntuación máxima, es decir 2/2, y en la parte de prácticas competitivas un 1.8/2*)
 
 (*En la práctica 12, para poder ejecutar aTree.ml debemos tener dentro del mismo directorio la implementación de binTree.ml*)
 
