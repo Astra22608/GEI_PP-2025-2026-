@@ -20,7 +20,26 @@ PRÁCTICA 3:
   · frases_2.ml = 0  -> (*Esto es debido a porque no corresponden los nombres con frases.ml, pero el resto esta bien.*)  
   · if_then_else = 10
 
+PRÁCTICA 4:  
+  · collatz.ml = 10
+  · collatz_plus.ml = 10
+  · mcd.ml = 10
+  · mcd_plus.ml = 10
+  
+PRÁCTICA 5:  
+  · fibto.ml = 10
+  · fast_fibto.ml = 10
+  · strg.ml = 10
 
+PRÁCTICA 6:  
+  · hanoi.ml = 7
+  · prime.ml = 10
+  · ej65.ml = 10
+
+PRÁCTICA 7:  
+  · fact.ml = 10
+  · myList.ml = 10
+  
 PRÁCTICAS COMPETIVAS: 
   1. 0.8/0.8 (tribo.ml)
   2. 1/1.2 (ajedrez.ml)
