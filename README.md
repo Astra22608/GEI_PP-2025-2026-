@@ -39,7 +39,31 @@ PRÁCTICA 6:
 PRÁCTICA 7:  
   · fact.ml = 10  
   · myList.ml = 10 
+
+PRÁCTICA 8:  
+  · folding.ml = 10  
+  · listing.ml = 10 
+
+PRÁCTICA 9:  
+  · concat.ml = 7  
+  · tail.ml = 10  
+  · tail2.ml = 7
   
+PRÁCTICA 10:  
+  · tour.ml = 7  
+  · shortest.ml = NC -> _para arreglar_
+
+PRÁCTICA 11:  
+  · binTree.ml = TI -> _tipos incorrectos, a cambiar_  
+  · stBinTree.ml = NC -> _a cambiar_  
+  · gTree.ml = NC -> _a cambiar_  
+  · bst.ml = NC -> _a cambiar_
+
+PRÁCTICA 12:  
+  · simpleC.ml = 10  
+  · aTree.ml = NC -> _para arreglar_  
+  · bq.ml = NC -> _para arreglar_
+
 PRÁCTICAS COMPETIVAS: 
   1. 0.8/0.8 (tribo.ml)
   2. 1/1.2 (ajedrez.ml)
