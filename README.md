@@ -27,17 +27,17 @@ PRÁCTICA 4:
   · mcd_plus.ml = 10 
   
 PRÁCTICA 5:  
-  · fibto.ml = 10 
-  · fast_fibto.ml = 10 
+  · fibto.ml = 10  
+  · fast_fibto.ml = 10  
   · strg.ml = 10 
 
 PRÁCTICA 6:  
-  · hanoi.ml = 7 
-  · prime.ml = 10 
+  · hanoi.ml = 7  
+  · prime.ml = 10  
   · ej65.ml = 10 
 
 PRÁCTICA 7:  
-  · fact.ml = 10 
+  · fact.ml = 10  
   · myList.ml = 10 
   
 PRÁCTICAS COMPETIVAS: 
