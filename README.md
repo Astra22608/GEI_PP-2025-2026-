@@ -21,9 +21,9 @@ PRÁCTICA 3:
   · if_then_else = 10
 
 PRÁCTICA 4:  
-  · collatz.ml = 10 
-  · collatz_plus.ml = 10 
-  · mcd.ml = 10 
+  · collatz.ml = 10  
+  · collatz_plus.ml = 10  
+  · mcd.ml = 10  
   · mcd_plus.ml = 10 
   
 PRÁCTICA 5:  
