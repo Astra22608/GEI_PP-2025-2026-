@@ -52,14 +52,14 @@ A continuación se muestra el desglose del estado y la puntuación de cada una d
 | | `tail.ml` | **10 / 10** | <kbd> Completado</kbd> (*Tail Recursion*) |
 | | `tail2.ml` | **7 / 10** | <kbd> Optimizar</kbd> |
 | **Práctica 10**| `tour.ml` | **7 / 10** | <kbd> Optimizar</kbd> |
-| | `shortest.ml` | *Pendiente* | <kbd>🛠️ NC</kbd> No calificado (para arreglar) |
+| | `shortest.ml` | *Pendiente* | <kbd> NC</kbd> No calificado (para arreglar) |
 | **Práctica 11**| `binTree.ml` | *Pendiente* | <kbd> TI</kbd> Tipos incorrectos, a cambiar |
-| | `stBinTree.ml`| *Pendiente* | <kbd>🛠️ NC</kbd> No calificado (a cambiar) |
-| | `gTree.ml` | *Pendiente* | <kbd>🛠️ NC</kbd> No calificado (a cambiar) |
-| | `bst.ml` | *Pendiente* | <kbd>🛠️ NC</kbd> No calificado (a cambiar) |
+| | `stBinTree.ml`| *Pendiente* | <kbd> NC</kbd> No calificado (a cambiar) |
+| | `gTree.ml` | *Pendiente* | <kbd> NC</kbd> No calificado (a cambiar) |
+| | `bst.ml` | *Pendiente* | <kbd> NC</kbd> No calificado (a cambiar) |
 | **Práctica 12**| `simpleC.ml` | **10 / 10** | <kbd> Completado</kbd> |
-| | `aTree.ml` | *Pendiente* | <kbd>🛠️ NC</kbd> No calificado (para arreglar) |
-| | `bq.ml` | *Pendiente* | <kbd>🛠️ NC</kbd> No calificado (para arreglar) |
+| | `aTree.ml` | *Pendiente* | <kbd> NC</kbd> No calificado (para arreglar) |
+| | `bq.ml` | *Pendiente* | <kbd> NC</kbd> No calificado (para arreglar) |
 
 ### Leyenda de Estados
 * <kbd> Completado</kbd> : Ejercicio terminado con la máxima puntuación.
